@@ -1,0 +1,31 @@
+﻿@page "/displaymatches"
+<h3>Matches</h3>
+
+<button class="btn btn-primary" @onclick="getMatches">View Matches</button>
+
+<ol>
+    @if(matches != null)
+    {
+        @foreach(var match in matches.matches)
+        {
+            <li>
+                @match.homeTeam.name <img src=@match.homeTeam.crest alt="Club Logo" width="50" height="50"> vs @match.awayTeam.name <img src=@match.awayTeam.crest alt="Club Logo" width="50" height="50">
+                - score @match.score.winner
+                - Date: @match.utcDate.ToString("yyyy-MM-dd HH:mm") 
+                - Status: @match.status
+            </li>
+        }
+
+    }
+</ol>
+
+@code {
+    private Matches? matches;
+
+    private void getMatches()
+    {
+        MatchInterface matchInterface = new FootballMatchService();
+
+        matches = matchInterface.GetMatches();
+    }
+}

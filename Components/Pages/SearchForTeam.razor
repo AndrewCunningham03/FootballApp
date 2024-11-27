@@ -1,0 +1,28 @@
+﻿<h3>View Squad</h3>
+
+<h3>Enter team ID of team you would like to view</h3>
+<input placeholder="" @bind="teamID" />
+<button class="btn btn-primary" @onclick="viewTeam">Search</button>
+<ol>
+    @if (team != null)
+    {
+        @foreach (var squad in team)
+        {
+            <li>
+                @squad.
+                @squad.position
+                </li>
+        }
+
+    }
+</ol>
+
+@code {
+    private int teamID;
+    private Team? team;
+    private void viewTeam()
+    {
+        TeamInterface teamInterface = new TeamService();
+        team = teamInterface.GetTeam(teamID);
+    }
+} 

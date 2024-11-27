@@ -1,0 +1,28 @@
+﻿<h3>PLTeams</h3>
+
+<button class="btn btn-primary" @onclick="getAllTeams">View Teams</button>
+
+<ol>
+    @if (teams != null)
+    {
+        @foreach (var team in teams.teams)
+        {
+            <li>
+                @team.name
+                - ID: @team.id
+                - Founded: @team.founded
+                - Manager: @team.coach.name
+                <img src=@team.crest alt="Club Logo" width="50" height="50">
+            </li>
+        }
+
+    }
+</ol>
+@code {
+    private Teams? teams;
+    private void getAllTeams()
+    {
+        TeamInterface teamInterface = new TeamService();
+        teams = teamInterface.GetAllTeamsInPL();
+    }
+}
