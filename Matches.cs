@@ -1,4 +1,5 @@
 ﻿
+
 public class Matches
 {
     public Filters filters { get; set; }
@@ -39,6 +40,47 @@ public class Match
     public Score score { get; set; }
     public Odds odds { get; set; }
     public object[] referees { get; set; }
+
+    public override bool Equals(object? obj)
+    {
+        return obj is Match match &&
+               EqualityComparer<Area>.Default.Equals(area, match.area) &&
+               EqualityComparer<Competition>.Default.Equals(competition, match.competition) &&
+               EqualityComparer<Season>.Default.Equals(season, match.season) &&
+               id == match.id &&
+               utcDate == match.utcDate &&
+               status == match.status &&
+               matchday == match.matchday &&
+               stage == match.stage &&
+               EqualityComparer<object>.Default.Equals(group, match.group) &&
+               lastUpdated == match.lastUpdated &&
+               EqualityComparer<Hometeam>.Default.Equals(homeTeam, match.homeTeam) &&
+               EqualityComparer<Awayteam>.Default.Equals(awayTeam, match.awayTeam) &&
+               EqualityComparer<Score>.Default.Equals(score, match.score) &&
+               EqualityComparer<Odds>.Default.Equals(odds, match.odds) &&
+               EqualityComparer<object[]>.Default.Equals(referees, match.referees);
+    }
+
+    public override int GetHashCode()
+    {
+        HashCode hash = new HashCode();
+        hash.Add(area);
+        hash.Add(competition);
+        hash.Add(season);
+        hash.Add(id);
+        hash.Add(utcDate);
+        hash.Add(status);
+        hash.Add(matchday);
+        hash.Add(stage);
+        hash.Add(group);
+        hash.Add(lastUpdated);
+        hash.Add(homeTeam);
+        hash.Add(awayTeam);
+        hash.Add(score);
+        hash.Add(odds);
+        hash.Add(referees);
+        return hash.ToHashCode();
+    }
 }
 
 public class Area

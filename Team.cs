@@ -1,6 +1,7 @@
 ﻿
 
-    public class Team
+
+public class Team
     {
         public Area1 area { get; set; }
         public int id { get; set; }
@@ -19,7 +20,50 @@
         public Squad[] squad { get; set; }
         public Staff[] staff { get; set; }
         public DateTime lastUpdated { get; set; }
+
+    public override bool Equals(object? obj)
+    {
+        return obj is Team team &&
+               EqualityComparer<Area1>.Default.Equals(area, team.area) &&
+               id == team.id &&
+               name == team.name &&
+               shortName == team.shortName &&
+               tla == team.tla &&
+               crest == team.crest &&
+               address == team.address &&
+               website == team.website &&
+               founded == team.founded &&
+               clubColors == team.clubColors &&
+               venue == team.venue &&
+               EqualityComparer<Runningcompetition[]>.Default.Equals(runningCompetitions, team.runningCompetitions) &&
+               EqualityComparer<Coach>.Default.Equals(coach, team.coach) &&
+               marketValue == team.marketValue &&
+               EqualityComparer<Squad[]>.Default.Equals(squad, team.squad) &&
+               EqualityComparer<Staff[]>.Default.Equals(staff, team.staff);
     }
+
+    public override int GetHashCode()
+    {
+        HashCode hash = new HashCode();
+        hash.Add(area);
+        hash.Add(id);
+        hash.Add(name);
+        hash.Add(shortName);
+        hash.Add(tla);
+        hash.Add(crest);
+        hash.Add(address);
+        hash.Add(website);
+        hash.Add(founded);
+        hash.Add(clubColors);
+        hash.Add(venue);
+        hash.Add(runningCompetitions);
+        hash.Add(coach);
+        hash.Add(marketValue);
+        hash.Add(squad);
+        hash.Add(staff);
+        return hash.ToHashCode();
+    }
+}
 
     public class Area1
     {
