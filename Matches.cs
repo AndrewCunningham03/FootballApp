@@ -1,5 +1,6 @@
 ﻿
 
+
 public class Matches
 {
     public Filters filters { get; set; }
@@ -25,6 +26,34 @@ public class Resultset
 
 public class Match
 {
+    public Match(Area area, Competition competition, Season season, int id, DateTime utcDate, string status, int matchday, string stage, object group, DateTime lastUpdated, Hometeam homeTeam, Awayteam awayTeam, Score score, Odds odds, object[] referees)
+    {
+        this.area = area;
+        this.competition = competition;
+        this.season = season;
+        this.id = id;
+        this.utcDate = utcDate;
+        this.status = status;
+        this.matchday = matchday;
+        this.stage = stage;
+        this.group = group;
+        this.lastUpdated = lastUpdated;
+        this.homeTeam = homeTeam;
+        this.awayTeam = awayTeam;
+        this.score = score;
+        this.odds = odds;
+        this.referees = referees;
+    }
+
+    public Match(Competition competition, int id, DateTime utcDate, Hometeam homeTeam, Awayteam awayTeam)
+    {
+        this.competition = competition;
+        this.id = id;
+        this.utcDate = utcDate;
+        this.homeTeam = homeTeam;
+        this.awayTeam = awayTeam;
+    }
+
     public Area area { get; set; }
     public Competition competition { get; set; }
     public Season season { get; set; }
@@ -44,42 +73,16 @@ public class Match
     public override bool Equals(object? obj)
     {
         return obj is Match match &&
-               EqualityComparer<Area>.Default.Equals(area, match.area) &&
                EqualityComparer<Competition>.Default.Equals(competition, match.competition) &&
-               EqualityComparer<Season>.Default.Equals(season, match.season) &&
                id == match.id &&
                utcDate == match.utcDate &&
-               status == match.status &&
-               matchday == match.matchday &&
-               stage == match.stage &&
-               EqualityComparer<object>.Default.Equals(group, match.group) &&
-               lastUpdated == match.lastUpdated &&
                EqualityComparer<Hometeam>.Default.Equals(homeTeam, match.homeTeam) &&
-               EqualityComparer<Awayteam>.Default.Equals(awayTeam, match.awayTeam) &&
-               EqualityComparer<Score>.Default.Equals(score, match.score) &&
-               EqualityComparer<Odds>.Default.Equals(odds, match.odds) &&
-               EqualityComparer<object[]>.Default.Equals(referees, match.referees);
+               EqualityComparer<Awayteam>.Default.Equals(awayTeam, match.awayTeam);
     }
 
     public override int GetHashCode()
     {
-        HashCode hash = new HashCode();
-        hash.Add(area);
-        hash.Add(competition);
-        hash.Add(season);
-        hash.Add(id);
-        hash.Add(utcDate);
-        hash.Add(status);
-        hash.Add(matchday);
-        hash.Add(stage);
-        hash.Add(group);
-        hash.Add(lastUpdated);
-        hash.Add(homeTeam);
-        hash.Add(awayTeam);
-        hash.Add(score);
-        hash.Add(odds);
-        hash.Add(referees);
-        return hash.ToHashCode();
+        return HashCode.Combine(competition, id, utcDate, homeTeam, awayTeam);
     }
 }
 
@@ -98,6 +101,12 @@ public class Competition
     public string code { get; set; }
     public string type { get; set; }
     public string emblem { get; set; }
+
+    public Competition(int id, string name) { 
+    
+        this.id = id;
+        this.name = name;
+    }
 }
 
 public class Season
@@ -116,6 +125,12 @@ public class Hometeam
     public string shortName { get; set; }
     public string tla { get; set; }
     public string crest { get; set; }
+
+    public Hometeam(int id, String name)
+    {
+        this.id = id;
+        this.name = name;
+    }
 }
 
 public class Awayteam
@@ -125,6 +140,12 @@ public class Awayteam
     public string shortName { get; set; }
     public string tla { get; set; }
     public string crest { get; set; }
+
+    public Awayteam(int id, string name)
+    {
+        this.id=id;
+        this.name = name;
+    }
 }
 
 public class Score
