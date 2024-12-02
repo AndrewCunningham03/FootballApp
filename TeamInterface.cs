@@ -3,6 +3,6 @@
     public interface TeamInterface
     {
         Teams GetAllTeamsInPL();
-        Team GetTeam(int teamId);
+       // Teams GetTeam(int teamId);
     }
 }

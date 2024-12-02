@@ -3,21 +3,28 @@
 
 <button class="btn btn-primary" @onclick="getMatches">View Matches</button>
 
-<ol>
-    @if(matches != null)
+<div class="matches-list">
+    @if (matches != null && matches.matches.Any())
     {
-        @foreach(var match in matches.matches)
+        @foreach (var match in matches.matches)
         {
-            <li>
-                @match.homeTeam.name <img src=@match.homeTeam.crest alt="Club Logo" width="50" height="50"> vs @match.awayTeam.name <img src=@match.awayTeam.crest alt="Club Logo" width="50" height="50">
-                - score @match.score.winner
-                - Date: @match.utcDate.ToString("yyyy-MM-dd HH:mm") 
-                - Status: @match.status
-            </li>
+                    <div class="match-item">
+                        <div class="match-header">
+                            <span class="team-name">@match.homeTeam.name</span>
+                            <img class="team-logo" src="@match.homeTeam.crest" alt="Home Team Logo" width="50" height="50">
+                            <span>vs</span>
+                            <img class="team-logo" src="@match.awayTeam.crest" alt="Away Team Logo" width="50" height="50">
+                            <span class="team-name">@match.awayTeam.name</span>
+                        </div>
+                        <div class="match-info">
+                            <span><strong>Score:</strong> @match.score.winner</span><br>
+                            <span><strong>Date:</strong> @match.utcDate.ToString("yyyy-MM-dd HH:mm")</span><br>
+                            <span><strong>Status:</strong> @match.status</span>
+                        </div>
+                    </div>
         }
-
     }
-</ol>
+</div>
 
 @code {
     private Matches? matches;

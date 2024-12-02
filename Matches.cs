@@ -53,6 +53,10 @@ public class Match
         this.homeTeam = homeTeam;
         this.awayTeam = awayTeam;
     }
+    public Match()
+    {
+
+    }
 
     public Area area { get; set; }
     public Competition competition { get; set; }

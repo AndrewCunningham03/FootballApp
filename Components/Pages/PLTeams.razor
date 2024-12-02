@@ -2,22 +2,25 @@
 
 <button class="btn btn-primary" @onclick="getAllTeams">View Teams</button>
 
-<ol>
-    @if (teams != null)
+<div class="teams-list">
+    @if (teams != null && teams.teams.Any())
     {
         @foreach (var team in teams.teams)
         {
-            <li>
-                @team.name
-                - ID: @team.id
-                - Founded: @team.founded
-                - Manager: @team.coach.name
-                <img src=@team.crest alt="Club Logo" width="50" height="50">
-            </li>
+            <div class="team-item">
+                <div class="team-header">
+                    <img class="team-logo" src="@team.crest" alt="Team Logo" width="50" height="50">
+                    <span class="team-name">@team.name</span>
+                </div>
+                <div class="team-info">
+                    <span><strong>ID:</strong> @team.id</span><br>
+                    <span><strong>Founded:</strong> @team.founded</span><br>
+                    <span><strong>Manager:</strong> @team.coach.name</span>
+                </div>
+            </div>
         }
-
     }
-</ol>
+</div>
 @code {
     private Teams? teams;
     private void getAllTeams()

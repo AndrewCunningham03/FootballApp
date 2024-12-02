@@ -6,11 +6,11 @@
 <ol>
     @if (team != null)
     {
-        @foreach (var squad in team)
+        @foreach (var squad in team.teams)
         {
             <li>
-                @squad.
-                @squad.position
+                @squad.name
+                @squad.squad
                 </li>
         }
 
@@ -19,10 +19,10 @@
 
 @code {
     private int teamID;
-    private Team? team;
+    private Teams? team;
     private void viewTeam()
     {
         TeamInterface teamInterface = new TeamService();
-        team = teamInterface.GetTeam(teamID);
+        //team = teamInterface.GetTeam(teamID);
     }
 } 

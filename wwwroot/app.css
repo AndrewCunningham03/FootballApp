@@ -1,15 +1,17 @@
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: black;
+    color: white; 
 }
 
 a, .btn-link {
-    color: #006bb7;
+    color: #26b050;
 }
 
 .btn-primary {
     color: #fff;
-    background-color: #1b6ec2;
-    border-color: #1861ac;
+    background-color: #26b050;
+    border-color: #105607;
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {

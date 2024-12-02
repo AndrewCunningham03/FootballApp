@@ -19,7 +19,6 @@ namespace FootballApp
 
             request.AddParameter("user", user);
             request.AddParameter("method", method);
-            request.AddParameter("limit", 10);
             request.AddParameter("format", "json");
 
             var response = client.Get(request);
@@ -34,9 +33,11 @@ namespace FootballApp
            
 
         }
-        public Team? GetTeam(int teamID)
+
+        /*
+        public Teams? GetTeam(int teamID)
         {
-            var client = new RestClient("http://api.football-data.org/v4/teams/");
+            var client = new RestClient("http://api.football-data.org/v4/teams/{teamID}");
             var request = new RestRequest();
 
             string apiKey = "999b81e4c85e46629a6c6b586ed9b788";
@@ -44,18 +45,18 @@ namespace FootballApp
             string method = "user.getTeam";
 
             request.AddHeader("X-Auth-Token", apiKey);
-            request.AddParameter("id", teamID);
+            //request.AddParameter("id", teamID);
 
             request.AddParameter("user", user);
             request.AddParameter("method", method);
-            request.AddParameter("limit", 10);
+            //request.AddParameter("limit", 10);
             request.AddParameter("format", "json");
 
             var response = client.Execute(request);
             if (!string.IsNullOrEmpty(response.Content))
             {
                 string recievedJson = response.Content;
-                Team? team = JsonConvert.DeserializeObject<Team?>(recievedJson);
+                Teams? team = JsonConvert.DeserializeObject<Teams?>(recievedJson);
                 return team;
             }
 
@@ -63,6 +64,7 @@ namespace FootballApp
             
 
         }
+        */
        
     }
 }

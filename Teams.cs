@@ -8,6 +8,11 @@
         public Competition competition { get; set; }
         public Season season { get; set; }
         public Team[] teams { get; set; }
+
+        public static implicit operator Teams(Team v)
+        {
+            throw new NotImplementedException();
+        }
     }
 
     public class Filters
@@ -51,6 +56,45 @@
         public Squad[] squad { get; set; }
         public object[] staff { get; set; }
         public DateTime lastUpdated { get; set; }
+        public Team(Area area, int id, string name, string shortName, string tla, string crest, string address, string website, int founded, string clubColors, string venue, Runningcompetition[] runningCompetitions, Coach coach, Squad[] squad, object[] staff, DateTime lastUpdated)
+        {
+            this.area = area;
+            this.id = id;
+            this.name = name;
+            this.shortName = shortName;
+            this.tla = tla;
+            this.crest = crest;
+            this.address = address;
+            this.website = website;
+            this.founded = founded;
+            this.clubColors = clubColors;
+            this.venue = venue;
+            this.runningCompetitions = runningCompetitions;
+            this.coach = coach;
+            this.squad = squad;
+            this.staff = staff;
+            this.lastUpdated = lastUpdated;
+        }
+
+        public Team(int id)
+        {
+            if(id > 0) {  this.id = id; } else { this.id = -1; }
+
+        }
+        public Team()
+        {
+
+        }
+        public override bool Equals(object? obj)
+        {
+            return obj is Team team &&
+                   id == team.id;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(id);
+        }
     }
 
     public class Area
