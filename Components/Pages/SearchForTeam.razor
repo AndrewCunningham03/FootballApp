@@ -6,11 +6,10 @@
 <ol>
     @if (team != null)
     {
-        @foreach (var squad in team.teams)
+        @foreach (var squad in team.squad)
         {
             <li>
                 @squad.name
-                @squad.squad
                 </li>
         }
 
@@ -19,7 +18,7 @@
 
 @code {
     private int teamID;
-    private Teams? team;
+    private Team? team;
     private void viewTeam()
     {
         TeamInterface teamInterface = new TeamService();

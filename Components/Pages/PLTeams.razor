@@ -3,7 +3,7 @@
 <button class="btn btn-primary" @onclick="getAllTeams">View Teams</button>
 
 <div class="teams-list">
-    @if (teams != null && teams.teams.Any())
+    @if (teams != null)
     {
         @foreach (var team in teams.teams)
         {
@@ -22,7 +22,7 @@
     }
 </div>
 @code {
-    private Teams? teams;
+    private Team? teams;
     private void getAllTeams()
     {
         TeamInterface teamInterface = new TeamService();

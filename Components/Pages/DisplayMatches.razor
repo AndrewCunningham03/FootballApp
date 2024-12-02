@@ -4,7 +4,7 @@
 <button class="btn btn-primary" @onclick="getMatches">View Matches</button>
 
 <div class="matches-list">
-    @if (matches != null && matches.matches.Any())
+    @if (matches != null)
     {
         @foreach (var match in matches.matches)
         {

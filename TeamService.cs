@@ -6,7 +6,7 @@ namespace FootballApp
     public class TeamService : TeamInterface
     {
 
-        public Teams? GetAllTeamsInPL()
+        public Team? GetAllTeamsInPL()
         {
             var client = new RestClient("http://api.football-data.org/v4/competitions/PL/teams");
             var request = new RestRequest();
@@ -25,7 +25,7 @@ namespace FootballApp
             if (!string.IsNullOrEmpty(response.Content))
             {
                 string recievedJson = response.Content;
-                Teams? teams = JsonConvert.DeserializeObject<Teams?>(recievedJson);
+                Team? teams = JsonConvert.DeserializeObject<Team?>(recievedJson);
                 return teams;
             }
 
@@ -35,7 +35,7 @@ namespace FootballApp
         }
 
         /*
-        public Teams? GetTeam(int teamID)
+        public Team? GetTeam(int teamID)
         {
             var client = new RestClient("http://api.football-data.org/v4/teams/{teamID}");
             var request = new RestRequest();
@@ -56,7 +56,7 @@ namespace FootballApp
             if (!string.IsNullOrEmpty(response.Content))
             {
                 string recievedJson = response.Content;
-                Teams? team = JsonConvert.DeserializeObject<Teams?>(recievedJson);
+                Team? team = JsonConvert.DeserializeObject<Team?>(recievedJson);
                 return team;
             }
 

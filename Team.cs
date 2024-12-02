@@ -1,18 +1,14 @@
 ﻿namespace FootballApp
 {
 
-    public class Teams
+    public class Team
     {
         public int count { get; set; }
         public Filters filters { get; set; }
         public Competition competition { get; set; }
         public Season season { get; set; }
-        public Team[] teams { get; set; }
+        public Team1[] teams { get; set; }
 
-        public static implicit operator Teams(Team v)
-        {
-            throw new NotImplementedException();
-        }
     }
 
     public class Filters
@@ -38,7 +34,7 @@
         public object winner { get; set; }
     }
 
-    public class Team
+    public class Team1
     {
         public Area area { get; set; }
         public int id { get; set; }
@@ -56,7 +52,7 @@
         public Squad[] squad { get; set; }
         public object[] staff { get; set; }
         public DateTime lastUpdated { get; set; }
-        public Team(Area area, int id, string name, string shortName, string tla, string crest, string address, string website, int founded, string clubColors, string venue, Runningcompetition[] runningCompetitions, Coach coach, Squad[] squad, object[] staff, DateTime lastUpdated)
+        public Team1(Area area, int id, string name, string shortName, string tla, string crest, string address, string website, int founded, string clubColors, string venue, Runningcompetition[] runningCompetitions, Coach coach, Squad[] squad, object[] staff, DateTime lastUpdated)
         {
             this.area = area;
             this.id = id;
@@ -76,18 +72,18 @@
             this.lastUpdated = lastUpdated;
         }
 
-        public Team(int id)
+        public Team1(int id)
         {
             if(id > 0) {  this.id = id; } else { this.id = -1; }
 
         }
-        public Team()
+        public Team1()
         {
 
         }
         public override bool Equals(object? obj)
         {
-            return obj is Team team &&
+            return obj is Team1 team &&
                    id == team.id;
         }
 

@@ -2,7 +2,7 @@
 {
     public interface TeamInterface
     {
-        Teams GetAllTeamsInPL();
-       // Teams GetTeam(int teamId);
+        Team GetAllTeamsInPL();
+        //Team GetTeam(int teamId);
     }
 }

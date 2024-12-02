@@ -18,7 +18,7 @@ namespace FootballApp
             
             request.AddParameter("user", user);
             request.AddParameter("method", method);
-            request.AddParameter("limit", 10);
+            
             request.AddParameter("format", "json");
 
             var response = client.Get(request);
